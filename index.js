@@ -15,8 +15,13 @@ if (Object.keys(args).length == 1) {
 }
 
 if (args.l === true) {
-    for (let i = 0; i < todo.length;i++) {
-        console.log(todo[i].id + ': ' + todo[i].task);
+    if (todo.length == 0) {
+        console.log('Nincs mára tennivalód! :)');
+    } else {
+        for (let i = 0; i < todo.length; i++) {
+            console.log(todo[i].id + ': ' + todo[i].task);
+        }
     }
+
 }
 console.log(Object.keys(args));
