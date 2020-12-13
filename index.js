@@ -29,7 +29,7 @@ function callingWithLOption(args, todo) {
 function callingWithAOption(args, todo) {
     const idNumber = todo.length + 1;
     const newTodo = todo;
-    newTodo.push( { id: idNumber, task: args.a} );
+    newTodo.push({ id: idNumber, task: args.a });
     fs.writeFileSync("todo.json", JSON.stringify(newTodo));
     return newTodo;
 };
@@ -41,7 +41,11 @@ if (args.l === true) {
 }
 
 if (!!args.a === true) {
-    todo = callingWithAOption(args, todo);
+    if (args.a === true) {
+        console.log('Nem lehetséges új feladat hozzáadása: nincs megadva a feladat!');
+    } else {
+        todo = callingWithAOption(args, todo);
+    }
 }
 
 console.log(args.a);
