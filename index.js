@@ -28,10 +28,10 @@ function callingWithL(args, todo) {
     } else {
         for (let i = 0; i < todo.length; i++) {
             line = todo[i].id + ': ' + todo[i].task;
-            if(todo[i].done === true){
+            if (todo[i].done === true) {
                 line = line + ' [x]';
                 console.log(line);
-            }else{
+            } else {
                 line = line + ' [ ]';
                 console.log(line);
             }
@@ -58,7 +58,7 @@ function callingWithR(args, todo) {
 }
 
 function callingWithC(args, todo) {
-    todo[args.c-1].done = true;
+    todo[args.c - 1].done = true;
     fs.writeFileSync("todo.json", JSON.stringify(todo));
 }
 
@@ -93,6 +93,17 @@ if (!!args.r === true) {
 }
 
 if (!!args.c === true) {
-    callingWithC(args, todo);
-}
+    if (args.c === true) {
+        console.log('Nem lehetséges a feladat végrehajtása: nem adtál meg indexet!');
+    } else {
+        if (!Number.isInteger(args.c)) {
+            console.log('Nem lehetséges a feladat végrehajtása: a megadott index nem szám');
+        } else {
+        if (args.c > todo.length) {
+            console.log('Nem lehetséges a feladat végrehajtása: túlindexelési probléma adódott!');
+        } else {
+            callingWithC(args, todo);
+        }
+    }
+}}
 

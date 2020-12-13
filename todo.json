@@ -1,17 +1,1 @@
-[
-    {
-        "id": 1,
-        "task": "Kutyát sétáltatni",
-        "done": false
-    },
-    {
-        "id": 2,
-        "task": "Tejet venni",
-        "done": true
-    },
-    {
-        "id": 3,
-        "task": "Megcsinálni a leckét",
-        "done": false
-    }
-]
+[{"id":1,"task":"Kutyát sétáltatni","done":true},{"id":2,"task":"Tejet venni","done":true},{"id":3,"task":"Megcsinálni a leckét","done":false}]
