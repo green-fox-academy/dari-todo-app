@@ -14,6 +14,11 @@ if (Object.keys(args).length == 1) {
     console.log('Parancssori Todo applikáció\n=============================\n\nParancssori argumentumok:\n' + todoHelp[0] + todoHelp[1] + '\n' + todoHelp[2] + todoHelp[3] + '\n' + todoHelp[4] + todoHelp[5] + '\n' + todoHelp[6] + todoHelp[7]);
 }
 
+if (Object.keys(args).length > 1 && !Object.keys(args).includes('l','a','r','c')) {
+    console.log('Nem támogatott argumentum!');
+    console.log('Parancssori Todo applikáció\n=============================\n\nParancssori argumentumok:\n' + todoHelp[0] + todoHelp[1] + '\n' + todoHelp[2] + todoHelp[3] + '\n' + todoHelp[4] + todoHelp[5] + '\n' + todoHelp[6] + todoHelp[7]);
+}
+
 
 function callingWithL(args, todo) {
     if (todo.length === 0) {
