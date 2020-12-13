@@ -23,7 +23,7 @@ function callingWithL(args, todo) {
             console.log(todo[i].id + ': ' + todo[i].task);
         }
     }
-};
+}
 
 
 function callingWithA(args, todo) {
@@ -31,7 +31,7 @@ function callingWithA(args, todo) {
     todo.push({ id: idNumber, task: args.a });
     fs.writeFileSync("todo.json", JSON.stringify(todo));
     return todo;
-};
+}
 
 function callingWithR(args, todo) {
     todo.splice(args.r - 1, 1);
@@ -56,7 +56,18 @@ if (!!args.a === true) {
 }
 
 if (!!args.r === true) {
-    callingWithR(args, todo);
+    if (args.r === true) {
+        console.log('Nem lehetséges az eltávolítás: nem adott meg indexet!');
+    } else {
+        if (!Number.isInteger(args.r)) {
+            console.log('Nem lehetséges az eltávolítás: a megadott index nem szám!');
+        } else {
+            if (args.r > todo.length) {
+                console.log('Nem lehetséges az eltávolítás: túlindexelési probléma adódott!');
+            } else {
+                callingWithR(args, todo);
+            }
+        }
+    }
 }
-
 
