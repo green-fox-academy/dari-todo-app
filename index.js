@@ -22,11 +22,20 @@ if (!Object.keys(args).includes('l') && !Object.keys(args).includes('a') && !Obj
 
 
 function callingWithL(args, todo) {
+    let line = '';
     if (todo.length === 0) {
         console.log('Nincs mára tennivalód! :)');
     } else {
         for (let i = 0; i < todo.length; i++) {
-            console.log(todo[i].id + ': ' + todo[i].task);
+            line = todo[i].id + ': ' + todo[i].task;
+            if(todo[i].done === true){
+                line = line + ' [x]';
+                console.log(line);
+            }else{
+                line = line + ' [ ]';
+                console.log(line);
+            }
+            line = '';
         }
     }
 }
