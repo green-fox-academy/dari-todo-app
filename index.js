@@ -15,7 +15,7 @@ if (Object.keys(args).length == 1) {
 }
 
 
-function callingWithLOption(args, todo) {
+function callingWithL(args, todo) {
     if (todo.length === 0) {
         console.log('Nincs mára tennivalód! :)');
     } else {
@@ -26,27 +26,37 @@ function callingWithLOption(args, todo) {
 };
 
 
-function callingWithAOption(args, todo) {
+function callingWithA(args, todo) {
     const idNumber = todo.length + 1;
-    const newTodo = todo;
-    newTodo.push({ id: idNumber, task: args.a });
-    fs.writeFileSync("todo.json", JSON.stringify(newTodo));
-    return newTodo;
+    todo.push({ id: idNumber, task: args.a });
+    fs.writeFileSync("todo.json", JSON.stringify(todo));
+    return todo;
 };
 
+function callingWithR(args, todo) {
+    todo.splice(args.r - 1, 1);
+    for (let i = args.r - 1; i < todo.length; i++) {
+        todo[i].id--;
+    }
+    fs.writeFileSync("todo.json", JSON.stringify(todo));
+
+}
 
 
 if (args.l === true) {
-    callingWithLOption(args, todo);
+    callingWithL(args, todo);
 }
 
 if (!!args.a === true) {
     if (args.a === true) {
         console.log('Nem lehetséges új feladat hozzáadása: nincs megadva a feladat!');
     } else {
-        todo = callingWithAOption(args, todo);
+        todo = callingWithA(args, todo);
     }
 }
 
-console.log(args.a);
+if (!!args.r === true) {
+    callingWithR(args, todo);
+}
+
 
